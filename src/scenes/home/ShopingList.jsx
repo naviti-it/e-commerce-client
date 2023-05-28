@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, Typography, Tab, Tabs, useMediaQuery } from '@mui/material';
 import Item from '../../components/Item';
 import { setItems } from '../../state'
-import { API_URL } from './../../utils/url';
+import { API_URL, STRAPI_API_TOKEN } from './../../utils/url';
 
 const ShopingList = () => {
 
@@ -18,7 +18,14 @@ const ShopingList = () => {
 
     async function getItems() {
         const items = await fetch(
-            `${API_URL}/api/items?populate=image`, { method: 'GET' }
+            `${API_URL}/api/items?populate=*`,
+            {
+                method: 'GET',
+                headers:
+                {
+                    Authorization: "Bearer " + STRAPI_API_TOKEN,
+                },
+            }
         );
 
 

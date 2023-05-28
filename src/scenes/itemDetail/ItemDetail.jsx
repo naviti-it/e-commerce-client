@@ -26,7 +26,7 @@ const ItemDetails = () => {
 
     const getItem = async () => {
         const item = await fetch(
-            `${API_URL}/api/items/${itemId}?populate=image`,
+            `${API_URL}/api/items/${itemId}?populate=*`,
             {
                 method: 'GET',
                 headers:
@@ -44,7 +44,7 @@ const ItemDetails = () => {
 
     const getItems = async () => {
         const items = await fetch(
-            `${API_URL}/api/items?populate=image`,
+            `${API_URL}/api/items?populate=*`,
             {
                 method: 'GET',
                 headers:
