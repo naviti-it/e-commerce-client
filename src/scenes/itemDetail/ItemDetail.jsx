@@ -26,7 +26,14 @@ const ItemDetails = () => {
 
     const getItem = async () => {
         const item = await fetch(
-            `${API_URL}/api/items/${itemId}?populate=image`, { method: 'GET' }
+            `${API_URL}/api/items/${itemId}?populate=image`,
+            {
+                method: 'GET',
+                headers:
+                {
+                    Authorization: "Bearer " + STRAPI_API_TOKEN,
+                },
+            }
         )
 
         const itemJson = await item.json();
@@ -37,7 +44,14 @@ const ItemDetails = () => {
 
     const getItems = async () => {
         const items = await fetch(
-            `${API_URL}/api/items?populate=image`, { method: 'GET' }
+            `${API_URL}/api/items?populate=image`,
+            {
+                method: 'GET',
+                headers:
+                {
+                    Authorization: "Bearer " + STRAPI_API_TOKEN,
+                },
+            }
         )
 
         const itemsJson = await items.json();

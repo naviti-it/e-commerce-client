@@ -7,7 +7,7 @@ import { shades } from '../../theme';
 import Shipping from './Shipping';
 import Payment from './Payment';
 import { loadStripe } from '@stripe/stripe-js'
-import { API_URL } from './../../utils/url';
+import { API_URL, STRAPI_API_TOKEN } from './../../utils/url';
 
 const stripePromise = loadStripe('pk_test_51Md7pJGV6JiPQMMSuZfGuMTXJRj5Qim1f73qWW4H7dPQ3DzPvmf0StGh5k78TLlumTMFu1oxlM54Ez9Aq8exvt3C00ankVzw7Q')
 
@@ -120,7 +120,10 @@ const Checkout = () => {
         const response = await fetch(`${API_URL}/api/orders`,
             {
                 method: 'POST',
-                headers: { 'Content-Type': "application/json" },
+                headers: {
+                    Authorization: "Bearer " + STRAPI_API_TOKEN,
+                    'Content-Type': "application/json"
+                },
                 body: JSON.stringify(requestBody)
             }
         );
