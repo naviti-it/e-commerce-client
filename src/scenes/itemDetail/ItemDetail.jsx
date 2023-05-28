@@ -47,10 +47,6 @@ const ItemDetails = () => {
             `${API_URL}/api/items?populate=image`,
             {
                 method: 'GET',
-                headers:
-                {
-                    Authorization: "Bearer " + STRAPI_API_TOKEN,
-                },
             }
         )
 
