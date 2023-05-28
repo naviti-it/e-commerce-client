@@ -44,7 +44,7 @@ const ItemDetails = () => {
 
     const getItems = async () => {
         const items = await fetch(
-            `${API_URL}/api/items?populate=*`,
+            `${API_URL}/api/items?populate=image`,
             {
                 method: 'GET',
                 headers:
@@ -81,7 +81,7 @@ const ItemDetails = () => {
                         alt={item?.attributes?.name}
                         width='100%'
                         height='100%'
-                        src={`${API_URL}${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+                        src={item?.attributes?.image?.data?.attributes?.formats?.medium?.url}
                         style={{ objectFit: 'contain' }}
                     />
                 </Box>
