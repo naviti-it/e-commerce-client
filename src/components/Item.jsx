@@ -36,7 +36,7 @@ const Item = ({ item, width }) => {
                     alt={item.name}
                     width='300px'
                     height='400px'
-                    src={`${API_URL}${url}`}
+                    src={`${url}`}
                     onClick={() => navigate(`/items/${item.id}`)}
                     style={{ cursor: 'pointer' }}
                 />
