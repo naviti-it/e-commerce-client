@@ -18,13 +18,9 @@ const ShopingList = () => {
 
     async function getItems() {
         const items = await fetch(
-            `${API_URL}/api/items?populate=*`,
+            `${API_URL}/api/items?populate=image`,
             {
                 method: 'GET',
-                headers:
-                {
-                    Authorization: "Bearer " + STRAPI_API_TOKEN,
-                },
             }
         );
 
@@ -37,13 +33,13 @@ const ShopingList = () => {
         getItems();
     }, []);
 
-    const topRatedItems = items?.filter(
+    const topRatedItems = items.filter(
         (item) => item.attributes.category === 'topRated'
     );
-    const newArrivalsItems = items?.filter(
+    const newArrivalsItems = items.filter(
         (item) => item.attributes.category === 'newArrivals'
     );
-    const bestSellersItems = items?.filter(
+    const bestSellersItems = items.filter(
         (item) => item.attributes.category === 'bestSellers'
     );
 
