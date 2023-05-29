@@ -121,7 +121,6 @@ const Checkout = () => {
             {
                 method: 'POST',
                 headers: {
-                    Authorization: "Bearer " + STRAPI_API_TOKEN,
                     'Content-Type': "application/json"
                 },
                 body: JSON.stringify(requestBody)
