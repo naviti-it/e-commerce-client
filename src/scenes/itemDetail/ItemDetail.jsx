@@ -36,7 +36,6 @@ const ItemDetails = () => {
         setItem(itemJson.data);
     }
 
-    console.log('getItem', item);
 
     const getItems = async () => {
         const items = await fetch(
@@ -50,7 +49,6 @@ const ItemDetails = () => {
         const itemsJson = await items.json();
         setItems(itemsJson.data);
     }
-    console.log('getITEMS', items);
 
 
     useEffect(() => {

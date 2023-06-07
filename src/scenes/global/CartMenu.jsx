@@ -22,7 +22,6 @@ const CartMenu = () => {
     const isCartOpen = useSelector((state) => state.cart.isCartOpen)
     const totalPrice = cart.reduce((total, item) => { return total + item?.count * item?.attributes?.price }, 0);
 
-    console.log(cart);
 
     return (
         <Box
