@@ -8,7 +8,7 @@ import { shades } from '../../theme'
 import { addToCart } from '../../state'
 import { useParams } from 'react-router-dom';
 import Item from '../../components/Item'
-import { API_URL, STRAPI_API_TOKEN } from './../../utils/url';
+import { API_URL } from './../../utils/url';
 
 
 const ItemDetails = () => {

@@ -7,9 +7,10 @@ import { shades } from '../../theme';
 import Shipping from './Shipping';
 import Payment from './Payment';
 import { loadStripe } from '@stripe/stripe-js'
-import { API_URL, STRAPI_API_TOKEN } from './../../utils/url';
+import { API_URL } from './../../utils/url';
 
-const stripePromise = loadStripe('pk_test_51Md7pJGV6JiPQMMSuZfGuMTXJRj5Qim1f73qWW4H7dPQ3DzPvmf0StGh5k78TLlumTMFu1oxlM54Ez9Aq8exvt3C00ankVzw7Q')
+
+const stripePromise = loadStripe(process.env.PUBLIC_STRIPE_TOKEN);
 
 const initialValues = {
     billingAddress: {
