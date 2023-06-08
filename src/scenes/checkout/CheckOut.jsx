@@ -10,7 +10,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import { API_URL, STRIPE_TOKEN } from './../../utils/url';
 
 
-const stripePromise = loadStripe(STRIPE_TOKEN);
+const stripePromise = loadStripe(`${STRIPE_TOKEN}`);
 
 const initialValues = {
     billingAddress: {
