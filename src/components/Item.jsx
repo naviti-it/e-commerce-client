@@ -6,7 +6,6 @@ import RemoveIcon from '@mui/icons-material/Remove'
 import { shades } from '../theme'
 import { addToCart } from '../state'
 import { useNavigate } from 'react-router-dom';
-import { API_URL } from './../utils/url';
 
 
 const Item = ({ item, width }) => {

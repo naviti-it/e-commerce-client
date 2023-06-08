@@ -7,7 +7,6 @@ import styled from '@emotion/styled';
 import { shades } from '../../theme';
 import { decreaseCount, increaseCount, removeFromCart, setIsCartOpen } from '../../state';
 import { useNavigate } from 'react-router-dom';
-import { API_URL } from './../../utils/url';
 
 const FlexBox = styled(Box)`
 display: flex;
