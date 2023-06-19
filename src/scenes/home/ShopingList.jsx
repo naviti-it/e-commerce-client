@@ -9,6 +9,7 @@ const ShopingList = () => {
 
     const dispatch = useDispatch();
     const [value, setValue] = useState('all');
+    const [loading, setLoading] = useState(true)
     const items = useSelector((state) => state.cart.items);
     const isNonMobile = useMediaQuery('(min-width:600px)');
 
@@ -17,16 +18,25 @@ const ShopingList = () => {
     }
 
     async function getItems() {
-        const items = await fetch(
-            `${API_URL}/api/items?populate=image`,
-            {
-                method: 'GET',
-            }
-        );
+        setLoading(true)
+        try {
+            const items = await fetch(
+                `${API_URL}/api/items?populate=image`,
+                {
+                    method: 'GET',
+                }
+            );
 
 
-        const itemsJson = await items.json();
-        dispatch(setItems(itemsJson.data))
+            const itemsJson = await items.json();
+            setLoading(false)
+            dispatch(setItems(itemsJson.data))
+        }
+        catch (error) {
+            setLoading(false)
+            console.log(error)
+        }
+
     }
 
     useEffect(() => {
@@ -83,7 +93,7 @@ const ShopingList = () => {
                 rowGap='20px'
                 columnGap='1.33%'
 
-            >
+            >   {loading && <div><h1>loading...</h1></div>}
                 {value === 'all' && items.map((item) => (
                     <Item item={item} key={`${item.name} - ${item.id}`} />
                 ))}
