@@ -85,6 +85,7 @@ const ShopingList = () => {
                 <Tab label='BEST SELLERS' value='bestSellers' />
                 <Tab label='TOP RATED' value='topRated' />
             </Tabs>
+            {loading && <LinearProgress />}
             <Box
                 margin='1 auto'
                 display='grid'
@@ -93,7 +94,7 @@ const ShopingList = () => {
                 rowGap='20px'
                 columnGap='1.33%'
 
-            >   {loading && <LinearProgress />}
+            >
                 {value === 'all' && items.map((item) => (
                     <Item item={item} key={`${item.name} - ${item.id}`} />
                 ))}
