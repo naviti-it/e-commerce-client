@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Typography, Tab, Tabs, useMediaQuery } from '@mui/material';
+import { Box, Typography, Tab, Tabs, useMediaQuery, LinearProgress } from '@mui/material';
 import Item from '../../components/Item';
 import { setItems } from '../../state'
 import { API_URL } from './../../utils/url';
@@ -93,7 +93,7 @@ const ShopingList = () => {
                 rowGap='20px'
                 columnGap='1.33%'
 
-            >   {loading && <div><h1>loading...</h1></div>}
+            >   {loading && <LinearProgress variant="determinate" value={progress} />}
                 {value === 'all' && items.map((item) => (
                     <Item item={item} key={`${item.name} - ${item.id}`} />
                 ))}
