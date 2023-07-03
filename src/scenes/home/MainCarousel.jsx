@@ -1,4 +1,5 @@
 import { Box, Typography, IconButton, useMediaQuery } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -18,6 +19,7 @@ const herroImageImports = importAll(
 
 const MainCarousel = () => {
     const isNonMobile = useMediaQuery('(min-width: 600px)');
+    const navigate = useNavigate();
 
 
     return (
@@ -62,11 +64,12 @@ const MainCarousel = () => {
 
                 </IconButton>
             )}
-
-
         >
             {Object.values(herroImageImports).map((image, index) => (
-                <Box key={`carousel-image-${index}`}>
+                <Box key={`carousel-image-${index}`}
+                    onClick={() => navigate('items')}
+                    sx={{ '&:hover': { cursor: 'pointer' } }}
+                >
                     <img
                         src={image}
                         alt={`carousel-${index}`}
