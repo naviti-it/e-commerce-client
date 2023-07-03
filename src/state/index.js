@@ -2,8 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   isCartOpen: false,
+  isMenuCategoryOpen: true,
   cart: [],
-  items: []
+  items: [],
+  filteredItems: [],
 }
 
 export const cartSlice = createSlice({
@@ -12,6 +14,16 @@ export const cartSlice = createSlice({
   reducers: {
     setItems: (state, action) => {
       state.items = action.payload
+    },
+    filterByCategory:(state, action)=>{
+        const filteredItems = state.items.filter((item) =>
+        item.attributes.category === action.payload);
+        return {
+          ...state,
+          filteredItems:
+          filteredItems.length > 0 ? filteredItems : [...state.items]
+        };
+      
     },
     addToCart: (state, action) => {
       state.cart = [...state.cart, action.payload.item]
@@ -37,11 +49,14 @@ export const cartSlice = createSlice({
     },
     setIsCartOpen: (state) => {
       state.isCartOpen = !state.isCartOpen
+    },
+    setIsMenuCategoryOpen:(state)=>{
+      state.isMenuCategoryOpen = !state.isMenuCategoryOpen
     }
   }
 })
 
-export const { setItems, addToCart, removeFromCart, increaseCount, decreaseCount, setIsCartOpen } =
+export const { setItems, addToCart, removeFromCart, increaseCount, decreaseCount, setIsCartOpen, setIsMenuCategoryOpen, filterByCategory } =
   cartSlice.actions
 
 export default cartSlice.reducer
