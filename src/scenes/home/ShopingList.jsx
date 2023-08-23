@@ -20,6 +20,9 @@ const ShopingList = () => {
                 `${process.env.REACT_APP_API_URL}/api/items?populate=image`,
                 {
                     method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
                 }
             );
 
