@@ -6,11 +6,10 @@ import * as yup from 'yup';
 import { shades } from '../../theme';
 import Shipping from './Shipping';
 import Payment from './Payment';
-import { loadStripe } from '@stripe/stripe-js'
-import { API_URL, STRIPE_TOKEN } from './../../utils/url';
+import { loadStripe } from '@stripe/stripe-js';
 
 
-const stripePromise = loadStripe(`${STRIPE_TOKEN}`);
+const stripePromise = loadStripe(`${process.env.REACT_APP_PUBLIC_STRIPE_TOKEN}`);
 
 const initialValues = {
     billingAddress: {
@@ -118,7 +117,7 @@ const Checkout = () => {
                 id, count
             }))
         }
-        const response = await fetch(`${API_URL}/api/orders`,
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/orders`,
             {
                 method: 'POST',
                 headers: {

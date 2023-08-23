@@ -7,8 +7,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import { shades } from '../../theme'
 import { addToCart } from '../../state'
 import { useParams } from 'react-router-dom';
-import Item from '../../components/Item'
-import { API_URL } from './../../utils/url';
+import Item from '../../components/Item';
 
 
 const ItemDetails = () => {
@@ -26,7 +25,7 @@ const ItemDetails = () => {
 
     const getItem = async () => {
         const item = await fetch(
-            `${API_URL}/api/items/${itemId}?populate=*`,
+            `${process.env.REACT_APP_API_URL}/api/items/${itemId}?populate=*`,
             {
                 method: 'GET',
             }
@@ -39,7 +38,7 @@ const ItemDetails = () => {
 
     const getItems = async () => {
         const items = await fetch(
-            `${API_URL}/api/items?populate=*`,
+            `${process.env.REACT_APP_API_URL}/api/items?populate=*`,
             {
                 method: 'GET',
 

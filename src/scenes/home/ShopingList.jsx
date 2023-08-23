@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, Typography } from '@mui/material';
 import Item from '../../components/Item';
 import { setItems } from '../../state'
-import { API_URL } from './../../utils/url';
 import Loader from './Loader';
 
 const ShopingList = () => {
@@ -18,7 +17,7 @@ const ShopingList = () => {
         setLoading(true)
         try {
             const items = await fetch(
-                `${API_URL}/api/items?populate=image`,
+                `${process.env.REACT_APP_API_URL}/api/items?populate=image`,
                 {
                     method: 'GET',
                 }
